@@ -13,7 +13,20 @@
     <div id="root"></div>
 
     <script type="text/babel">
-        const { useState } = React;
+        const { useState, useEffect } = React;
+
+        const STORAGE_KEY = 'vencimientos_productos';
+
+        const loadProducts = () => {
+            try {
+                const stored = localStorage.getItem(STORAGE_KEY);
+                if (stored) {
+                    const parsed = JSON.parse(stored);
+                    if (Array.isArray(parsed)) return parsed;
+                }
+            } catch (e) {}
+            return [{ id: 1, name: 'Producto 1', expiryDate: '2026-04-24' }];
+        };
 
         // Iconos SVG
         const Plus = () => (
@@ -50,9 +63,11 @@
         );
 
         const InventoryTracker = () => {
-            const [products, setProducts] = useState([
-                { id: 1, name: 'Producto 1', expiryDate: '2026-04-24' }
-            ]);
+            const [products, setProducts] = useState(loadProducts);
+
+            useEffect(() => {
+                localStorage.setItem(STORAGE_KEY, JSON.stringify(products));
+            }, [products]);
             
             const getToday = () => {
                 const now = new Date();
