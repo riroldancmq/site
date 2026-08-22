@@ -87,19 +87,19 @@ const CalendarIcon = ({ size = 18 }) => (
 );
 
 const ProgressRing = ({ pct, color, days }) => {
-    const radius = 72;
+    const radius = 84;
     const circumference = 2 * Math.PI * radius;
     const offset = circumference * (1 - pct / 100);
     const expired = days < 0;
     return (
-        <div className="relative w-[180px] h-[180px] mx-auto">
-            <svg width="180" height="180" viewBox="0 0 180 180">
-                <circle cx="90" cy="90" r={radius} fill="none"
-                    className="stroke-slate-200 dark:stroke-slate-800" strokeWidth="13" />
-                <circle cx="90" cy="90" r={radius} fill="none"
-                    stroke={color} strokeWidth="13" strokeLinecap="round"
+        <div className="relative w-[210px] h-[210px] mx-auto">
+            <svg width="210" height="210" viewBox="0 0 210 210">
+                <circle cx="105" cy="105" r={radius} fill="none"
+                    className="stroke-slate-200 dark:stroke-slate-800" strokeWidth="12" />
+                <circle cx="105" cy="105" r={radius} fill="none"
+                    stroke={color} strokeWidth="12" strokeLinecap="round"
                     strokeDasharray={circumference} strokeDashoffset={offset}
-                    transform="rotate(-90 90 90)" className="ring-progress" />
+                    transform="rotate(-90 105 105)" className="ring-progress" />
             </svg>
             <div className="absolute inset-0 flex flex-col items-center justify-center">
                 <span className={`text-5xl font-extrabold leading-none tracking-tight ${expired ? 'text-red-500 dark:text-red-400' : 'text-slate-800 dark:text-slate-50'}`}>
