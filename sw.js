@@ -1,4 +1,4 @@
-const CACHE_NAME = 'vencimientos-v1';
+const CACHE_NAME = 'vencimientos-v2';
 const PRECACHE = [
     './',
     './index.html',
@@ -33,17 +33,16 @@ self.addEventListener('fetch', (event) => {
     if (event.request.method !== 'GET') return;
 
     event.respondWith(
-        caches.match(event.request).then((cached) => {
-            const network = fetch(event.request)
-                .then((response) => {
-                    if (response.ok && event.request.url.startsWith(self.location.origin)) {
-                        const clone = response.clone();
-                        caches.open(CACHE_NAME).then((cache) => cache.put(event.request, clone));
-                    }
-                    return response;
-                })
-                .catch(() => cached);
-            return cached || network;
-        })
+        fetch(event.request)
+            .then((response) => {
+                if (response.ok && event.request.url.startsWith(self.location.origin)) {
+                    const clone = response.clone();
+                    caches.open(CACHE_NAME).then((cache) => cache.put(event.request, clone));
+                }
+                return response;
+            })
+            .catch(() =>
+                caches.match(event.request).then((cached) => cached || caches.match('./'))
+            )
     );
 });
