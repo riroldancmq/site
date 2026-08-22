@@ -1,0 +1,66 @@
+:root {
+    color-scheme: light;
+}
+
+html.dark {
+    color-scheme: dark;
+}
+
+body {
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.app-bg {
+    min-height: 100vh;
+    background-color: #f1f5f9;
+    background-image:
+        radial-gradient(ellipse 80% 50% at 20% -10%, rgba(16, 185, 129, 0.12), transparent),
+        radial-gradient(ellipse 60% 40% at 90% 10%, rgba(59, 130, 246, 0.08), transparent);
+}
+
+html.dark .app-bg {
+    background-color: #020617;
+    background-image:
+        radial-gradient(ellipse 80% 50% at 20% -10%, rgba(16, 185, 129, 0.15), transparent),
+        radial-gradient(ellipse 60% 40% at 90% 10%, rgba(59, 130, 246, 0.1), transparent);
+}
+
+.card-surface {
+    transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.3s ease,
+        background-color 0.3s ease;
+}
+
+.card-surface:hover {
+    transform: translateY(-2px);
+}
+
+.ring-progress {
+    transition: stroke-dashoffset 0.8s cubic-bezier(0.22, 1, 0.36, 1), stroke 0.3s ease;
+}
+
+.fade-in {
+    animation: fadeIn 0.35s ease both;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(8px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+    border-radius: 9999px;
+    background: rgba(148, 163, 184, 0.4);
+}
+
+html.dark ::-webkit-scrollbar-thumb {
+    background: rgba(71, 85, 105, 0.6);
+}
