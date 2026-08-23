@@ -70,11 +70,8 @@ const Moon = () => (
 );
 
 const TimerIcon = () => (
-    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round">
-        <circle cx="12" cy="13" r="8"></circle>
-        <path d="M12 9v4l2 2"></path>
-        <path d="M9 2h6"></path>
-    </svg>
+    <img src="icons/icon-96.png" alt="" width="22" height="22"
+        className="w-[22px] h-[22px]" />
 );
 
 const CalendarIcon = ({ size = 18 }) => (

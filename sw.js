@@ -1,10 +1,12 @@
-const CACHE_NAME = 'vencimientos-v2';
+const CACHE_NAME = 'vencimientos-v3';
 const PRECACHE = [
     './',
     './index.html',
     './app.js',
     './styles.css',
     './manifest.webmanifest',
+    './icons/icon-48.png',
+    './icons/icon-96.png',
     './icons/icon-192.png',
     './icons/icon-512.png',
     './icons/icon-maskable-192.png',
